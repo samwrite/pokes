@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome</h1>
+    <h2>Register</h2>
+    <form action = "{% url 'loginapp:register' %}", method = "POST">
+        {% csrf_token %}
+    Name: <input type="text" name="name" value=""><br>
+    Alias: <input type="text" name="alias" value=""><br>
+    Email: <input type="email" name="email" value=""><br>
+    Password: <input type="text" name="password" value=""><br>
+    <p>*Password should be at least 8 characters</p>
+    Confirm PW:: <input type="text" name="cpassword" value=""><br>
+    Date of Birth: <input type="date" name="birth" value=""><br>
+    <input type="submit" name= value="Register">
+    </form>
+    <br><br>
+    <h2>Login</h2>
+    <form action="{% url 'loginapp:login' %}" method="POST">
+        {%csrf_token%}
+        Email: <input type="email" name="email" value=""><br>
+        Password: <input type="password" name="password" value=""><br>
+        <input type="submit" name="" value="Login">
+    </form>
+    <br><br>
+    {%if messages%}
+    {%for message in messages%}
+    {{message}}
+    <br>
+    {%endfor%}
+    {%endif%}
+</body>
+</html>

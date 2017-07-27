@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome {{user.alias}}!</h1>
+    <a href="{% url 'pokeapp:logout' %}">Logout</a>
+    <p>{{count}} people poked you!</p>
+    <br>
+    {%for poker in pokers%}
+        <p>{{poker.poker.alias}} poked you {{poker.counter}} times.</p>
+    {%endfor%}
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Alias</th> 
+            <th>Email Address</th>
+            <th>Poke History</th>
+            <th>Action</th>
+        </tr>
+        {%for user in others%}
+        <tr>
+            <td>{{user.name}}</td>
+            <td>{{user.alias}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.pokes}}</td>
+            <td><a href="{% url 'pokeapp:poke' user.id%}">Poke</a></td>
+        </tr>
+        {%endfor%}
+    </table>
+</body>
+</html>
